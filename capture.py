@@ -4,10 +4,11 @@ import argparse
 import cv2
 
 parser = argparse.ArgumentParser(description=desc)
+parser.add_argument('-d', '--device', type=int, help='device number', default=0)
 parser.add_argument('-s', '--save', action='store_true')
 args = parser.parse_args()
 
-capture = cv2.VideoCapture(0)
+capture = cv2.VideoCapture(args.device)
 
 if args.save:
 	ret, frame = capture.read()
