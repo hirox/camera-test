@@ -21,9 +21,9 @@ else:
 		ret, frame = capture.read()
 
 		if ret:
-			# resize the window
-			windowsize = (800, 600)
-			frame = cv2.resize(frame, windowsize)
+			if frame.shape[0] > 1000:
+				windowsize = (int(frame.shape[1] / 2), int(frame.shape[0] / 2))
+				frame = cv2.resize(frame, windowsize)
 
 			cv2.imshow('title',frame)
 			if cv2.waitKey(1) & 0xFF == ord('q'):
